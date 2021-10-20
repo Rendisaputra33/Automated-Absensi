@@ -20,18 +20,28 @@ class AbsenAutomation:
         self.inputContent()
 
     def inputContent(self):
+
+        self.baseInput()
+
+        self.checkBoxInput()
+
+        self.buttonClick()
+
+        time.sleep(60)
+
+    def baseInput(self):
         self.inputs(self.emailS)[0].send_keys(self.emailV)
         self.inputs(self.nameS)[0].send_keys(self.nameV)
         self.inputs(self.nisS)[0].send_keys(self.nisV)
+
+    def checkBoxInput(self):
         checkbox = self.inputs(self.radioS)
         checkbox[0].click()
         checkbox[3].click()
 
+    def buttonClick(self):
         self.inputs('.appsMaterialWizButtonPaperbuttonContent')[0].click()
-
         self.inputs('div[jsname=M2UYVd]')[0].click()
-
-        time.sleep(60)
 
     def inputs(self, selector):
         return self.browser.find_elements_by_css_selector(selector)
