@@ -4,35 +4,35 @@ import time
 
 
 class AbsenAutomation:
+
+    data = {
+        'esel': 'input[autocomplete=email]',
+        'eval': 'gorengmbah@gmail.com',
+        'nsel': 'input[aria-labelledby=i7]',
+        'nval': 'Rendi Saputra',
+        'nisel': 'input[aria-labelledby=i11]',
+        'nival': '20439'
+    }
+
     def __init__(self, baseUrl: str):
         self.browser = webdriver.Chrome(ChromeDriverManager().install())
         self.baseUrl = baseUrl
-        self.emailS = 'input[autocomplete=email]'
-        self.emailV = 'gorengmbah@gmail.com'
-        self.nameS = 'input[aria-labelledby=i7]'
-        self.nameV = 'Rendi Saputra'
         self.radioS = '.docssharedWizToggleLabeledLabelWrapper'
-        self.nisS = 'input[aria-labelledby=i11]'
-        self.nisV = '20439'
 
     def start(self):
         self.browser.get(self.baseUrl)
         self.inputContent()
-
-    def inputContent(self):
-
-        self.baseInput()
-
-        self.checkBoxInput()
-
-        self.buttonClick()
-
         time.sleep(60)
 
+    def inputContent(self):
+        self.baseInput()
+        self.checkBoxInput()
+        self.buttonClick()
+
     def baseInput(self):
-        self.inputs(self.emailS)[0].send_keys(self.emailV)
-        self.inputs(self.nameS)[0].send_keys(self.nameV)
-        self.inputs(self.nisS)[0].send_keys(self.nisV)
+        self.inputs(self.data['esel'])[0].send_keys(self.data['eval'])
+        self.inputs(self.data['nsel'])[0].send_keys(self.data['nval'])
+        self.inputs(self.data['nisel'])[0].send_keys(self.data['nival'])
 
     def checkBoxInput(self):
         checkbox = self.inputs(self.radioS)
