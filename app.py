@@ -31,16 +31,23 @@ class AbsenAutomation:
 
     def baseInput(self):
         self.inputs(self.data['esel'])[0].send_keys(self.data['eval'])
+        time.sleep(30)
         self.inputs(self.data['nsel'])[0].send_keys(self.data['nval'])
+        time.sleep(20)
         self.inputs(self.data['nisel'])[0].send_keys(self.data['nival'])
+        time.sleep(40)
 
     def checkBoxInput(self):
         checkbox = self.inputs(self.radioS)
+        time.sleep(20)
         checkbox[0].click()
+        time.sleep(20)
         checkbox[3].click()
 
     def buttonClick(self):
+        time.sleep(20)
         self.inputs('.appsMaterialWizButtonPaperbuttonContent')[0].click()
+        time.sleep(40)
         self.inputs('div[jsname=M2UYVd]')[0].click()
 
     def inputs(self, selector):
